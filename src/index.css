@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+
+  /* iOS-inspired color palette */
+  --color-ios-blue:      #007AFF;
+  --color-ios-blue-dark: #0062CC;
+  --color-ios-bg:        #F2F2F7;
+  --color-ios-surface:   #FFFFFF;
+  --color-ios-text:      #1C1C1E;
+  --color-ios-text2:     #3C3C43;
+  --color-ios-muted:     #6E6E73;
+  --color-ios-border:    rgba(60,60,67,0.12);
+  --color-ios-red:       #FF3B30;
+  --color-ios-green:     #34C759;
+  --color-ios-orange:    #FF9500;
+  --color-ios-fill:      rgba(120,120,128,0.12);
+  --color-ios-fill2:     rgba(120,120,128,0.08);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: #F2F2F7;
+  color: #1C1C1E;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100dvh;
+}
+
+#root { width: 100%; }
+
+/* Card shadow */
+.card-shadow {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+}
+
+.card-shadow-md {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10), 0 8px 24px rgba(0,0,0,0.06);
+}
+
+/* Entrance animation */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Form transition */
+@keyframes slide-in {
+  from { opacity: 0; transform: translateY(-6px) scale(0.99); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-slide-in {
+  animation: slide-in 0.25s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* iOS-style input */
+.ios-input {
+  width: 100%;
+  background: #F2F2F7;
+  border: 1.5px solid transparent;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 16px;
+  font-family: var(--font-sans);
+  color: #1C1C1E;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  -webkit-appearance: none;
+}
+.ios-input:focus {
+  background: #fff;
+  border-color: #007AFF;
+  box-shadow: 0 0 0 3px rgba(0,122,255,0.15);
+}
+.ios-input::placeholder { color: #AEAEB2; }
+.ios-input.error {
+  border-color: #FF3B30;
+  box-shadow: 0 0 0 3px rgba(255,59,48,0.12);
+}
+.ios-input::-webkit-calendar-picker-indicator { opacity: 0.5; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 999px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up, .animate-slide-in { animation: none; }
+  html { scroll-behavior: auto; }
+}
